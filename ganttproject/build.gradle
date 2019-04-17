@@ -65,6 +65,8 @@ dependencies {
     direct 'org.slf4j:slf4j-simple:1.7.+'
     direct 'org.swinglabs:jxlayer:3.0.4'
 
+    compile files('lib/core/letzmap.jar')
+
     compile configurations.direct
     compile configurations.providedCompile
     compile configurations.exportedLibs

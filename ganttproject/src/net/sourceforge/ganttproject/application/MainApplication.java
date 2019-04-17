@@ -6,6 +6,7 @@ package net.sourceforge.ganttproject.application;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import letzplay.GanttGameLoop;
 import net.sourceforge.ganttproject.GPLogger;
 import net.sourceforge.ganttproject.GanttProject;
 
@@ -24,6 +25,9 @@ public class MainApplication implements IPlatformRunnable {
   // window closes
   @Override
   public Object run(Object args) throws Exception {
+    GanttGameLoop.getGameLoop().init();
+    System.out.println("GameLoop init");
+
     Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
     String[] cmdLine = (String[]) args;
     Runnable onApplicationQuit = new Runnable() {
