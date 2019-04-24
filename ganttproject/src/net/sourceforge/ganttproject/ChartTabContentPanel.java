@@ -22,6 +22,8 @@ import biz.ganttproject.core.option.ChangeValueEvent;
 import biz.ganttproject.core.option.ChangeValueListener;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Supplier;
+import letzplay.GanttGameLoop;
+import letzplay.Output;
 import net.sourceforge.ganttproject.chart.TimelineChart;
 import net.sourceforge.ganttproject.chart.overview.NavigationPanel;
 import net.sourceforge.ganttproject.chart.overview.ZoomingPanel;
@@ -80,6 +82,20 @@ abstract class ChartTabContentPanel {
     imageWrapper.add(myImagePanel, BorderLayout.WEST);
     //myImagePanel.setAlignmentX(Component.LEFT_ALIGNMENT);
     treeHeader.add(imageWrapper);
+
+
+    //Questpanel
+    //TODO make proper Output
+    JLabel textLabel = new JLabel();
+    Output out = GanttGameLoop.getGameLoop().output();
+    textLabel.setText(out.toString());
+    textLabel.setPreferredSize(new Dimension(300, 500));
+
+    final Box questBox = Box.createVerticalBox();
+    questBox.add(textLabel);
+    questBox.setVisible(true);
+    left.add(questBox,BorderLayout.SOUTH);
+
 
     left.add(treeHeader, BorderLayout.NORTH);
 

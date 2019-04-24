@@ -37,6 +37,7 @@ import com.google.common.collect.Lists;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Scene;
+import letzplay.GanttGameLoop;
 import net.sourceforge.ganttproject.action.ActiveActionProvider;
 import net.sourceforge.ganttproject.action.ArtefactAction;
 import net.sourceforge.ganttproject.action.ArtefactDeleteAction;
@@ -1263,6 +1264,9 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   @Override
   public void refresh() {
+    //Updates the GameLoop
+    GanttGameLoop.getGameLoop().update();
+
     getTaskManager().processCriticalPath(getTaskManager().getRootTask());
     getResourcePanel().getResourceTreeTableModel().updateResources();
     getResourcePanel().getResourceTreeTable().setRowHeight(getResourceChart().getModel().calculateRowHeight());
