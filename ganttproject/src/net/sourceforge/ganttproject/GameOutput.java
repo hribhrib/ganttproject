@@ -12,15 +12,15 @@ public class GameOutput {
 
     private static List<JTextArea> texts = new LinkedList<>();
 
-    public static void addTextArea(JTextArea area){
+    public static void addTextArea(JTextArea area) {
         texts.add(area);
     }
 
     public static void refresh() {
         GanttGameLoop.getGameLoop().update();
         output = GanttGameLoop.getGameLoop().output();
-        for (JTextArea a:texts) {
-            a.setText(output.lvl + "\n" + output.quests.toString());
+        for (JTextArea a : texts) {
+            a.setText("Current Level: " + output.lvl + ", " + output.exp + "% to next Level\n" + output.quests.toString());
         }
     }
 }

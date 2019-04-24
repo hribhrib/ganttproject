@@ -88,6 +88,7 @@ abstract class ChartTabContentPanel {
     //TODO make proper Output
     JTextArea textLabel = new JTextArea();
     textLabel.setPreferredSize(new Dimension(300, 400));
+    textLabel.setLineWrap(true);
     GameOutput.addTextArea(textLabel);
     GameOutput.refresh();
 
