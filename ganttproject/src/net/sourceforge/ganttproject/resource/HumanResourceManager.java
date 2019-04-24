@@ -22,6 +22,8 @@ import biz.ganttproject.core.time.GanttCalendar;
 import com.google.common.collect.Lists;
 import letzplay.GanttGameLoop;
 import net.sourceforge.ganttproject.CustomPropertyManager;
+import net.sourceforge.ganttproject.GameOutput;
+import net.sourceforge.ganttproject.GanttProject;
 import net.sourceforge.ganttproject.roles.Role;
 import net.sourceforge.ganttproject.roles.RoleManager;
 import net.sourceforge.ganttproject.undo.GPUndoManager;
@@ -149,8 +151,7 @@ public class HumanResourceManager {
 
   public void add(HumanResource resource) {
     GanttGameLoop.getGameLoop().input("res:add:"+resource.getName().trim().toLowerCase());
-    GanttGameLoop.getGameLoop().update();
-    GanttGameLoop.getGameLoop().output();
+    GameOutput.refresh();
 
     if (resource.getId() == -1) {
       resource.setId(nextFreeId);

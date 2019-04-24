@@ -1265,7 +1265,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
   @Override
   public void refresh() {
     //Updates the GameLoop
-    GanttGameLoop.getGameLoop().update();
+    System.out.println("Refreshed");
+    GameOutput.refresh();
 
     getTaskManager().processCriticalPath(getTaskManager().getRootTask());
     getResourcePanel().getResourceTreeTableModel().updateResources();

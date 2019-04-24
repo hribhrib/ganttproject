@@ -86,10 +86,11 @@ abstract class ChartTabContentPanel {
 
     //Questpanel
     //TODO make proper Output
-    JLabel textLabel = new JLabel();
-    Output out = GanttGameLoop.getGameLoop().output();
-    textLabel.setText(out.toString());
-    textLabel.setPreferredSize(new Dimension(300, 500));
+    JTextArea textLabel = new JTextArea();
+    textLabel.setPreferredSize(new Dimension(300, 400));
+    GameOutput.addTextArea(textLabel);
+    GameOutput.refresh();
+
 
     final Box questBox = Box.createVerticalBox();
     questBox.add(textLabel);
