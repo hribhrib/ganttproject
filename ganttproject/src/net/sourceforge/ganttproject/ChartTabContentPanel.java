@@ -22,6 +22,7 @@ import biz.ganttproject.core.option.ChangeValueEvent;
 import biz.ganttproject.core.option.ChangeValueListener;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Supplier;
+import letzplay.GameLoop;
 import letzplay.GanttGameLoop;
 import letzplay.Output;
 import net.sourceforge.ganttproject.chart.TimelineChart;
@@ -86,18 +87,8 @@ abstract class ChartTabContentPanel {
 
     //Questpanel
     //TODO make proper Output
-    JTextArea textLabel = new JTextArea();
-    textLabel.setPreferredSize(new Dimension(300, 400));
-    textLabel.setLineWrap(true);
-    GameOutput.addTextArea(textLabel);
-    GameOutput.refresh();
-
-
-    final Box questBox = Box.createVerticalBox();
-    questBox.add(textLabel);
-    questBox.setVisible(true);
-    left.add(questBox,BorderLayout.SOUTH);
-
+    left.add(GameOutput.getQuestBox(),BorderLayout.SOUTH);
+    //---
 
     left.add(treeHeader, BorderLayout.NORTH);
 
