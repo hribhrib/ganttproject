@@ -102,7 +102,7 @@ public class GameOutput {
         if (tutorialIcon != null) {
             tree.setCellRenderer(new MyRenderer(tutorialIcon));
         }
-        System.out.println("\n\n****");
+
         JTextField lvl = new JTextField();
         addTextField(lvl);
         addDesc(desc);
