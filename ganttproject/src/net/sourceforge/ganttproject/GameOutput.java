@@ -53,6 +53,8 @@ public class GameOutput {
     }
 
     public static Box getQuestBox() {
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+
 
         JTextArea desc = new JTextArea();
         desc.setEditable(false);
@@ -71,6 +73,7 @@ public class GameOutput {
 
         JTree tree = new JTree(treeModel);
         //tree.setPreferredSize(new Dimension(100, 100));
+        //tree.setMaximumSize(new Dimension(300,100));
         tree.getSelectionModel().setSelectionMode
                 (TreeSelectionModel.SINGLE_TREE_SELECTION);
 
@@ -104,6 +107,9 @@ public class GameOutput {
         }
 
         JTextField lvl = new JTextField();
+        lvl.setEditable(false);
+        lvl.setMaximumSize(new Dimension(2000,50));
+
         addTextField(lvl);
         addDesc(desc);
         addQuestsList(tree);
@@ -113,6 +119,10 @@ public class GameOutput {
         JScrollPane scrollDesc = new JScrollPane(desc);
 
         refresh();
+
+        //splitPane.setTopComponent(scrollQuest);
+        //splitPane.setBottomComponent(scrollDesc);
+
 
         final Box questBox = Box.createVerticalBox();
         questBox.add(lvl);

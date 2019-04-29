@@ -31,6 +31,7 @@ import net.sourceforge.ganttproject.chart.overview.ZoomingPanel;
 import net.sourceforge.ganttproject.gui.GanttImagePanel;
 import net.sourceforge.ganttproject.gui.UIFacade;
 import net.sourceforge.ganttproject.language.GanttLanguage;
+import org.graalvm.compiler.java.JsrNotSupportedBailout;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -84,15 +85,23 @@ abstract class ChartTabContentPanel {
     //myImagePanel.setAlignmentX(Component.LEFT_ALIGNMENT);
     treeHeader.add(imageWrapper);
 
+    left.add(treeHeader, BorderLayout.NORTH);
+
 
     //Questpanel
     //TODO make proper Output
-    left.add(GameOutput.getQuestBox(),BorderLayout.SOUTH);
+    JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+    split.setTopComponent(getTreeComponent());
+    split.setBottomComponent(GameOutput.getQuestBox());
+    split.setResizeWeight(0.5);
+
+    //for quest
+    left.add(split,BorderLayout.CENTER);
+    //left.add(getTreeComponent(), BorderLayout.CENTER);
+
     //---
 
-    left.add(treeHeader, BorderLayout.NORTH);
 
-    left.add(getTreeComponent(), BorderLayout.CENTER);
     Dimension minSize = new Dimension(0, 0);
     left.setMinimumSize(minSize);
 
