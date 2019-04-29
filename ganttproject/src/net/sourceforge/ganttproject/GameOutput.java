@@ -70,7 +70,7 @@ public class GameOutput {
         treeModel = new DefaultTreeModel(top);
 
         JTree tree = new JTree(treeModel);
-        tree.setPreferredSize(new Dimension(100, 100));
+        //tree.setPreferredSize(new Dimension(100, 100));
         tree.getSelectionModel().setSelectionMode
                 (TreeSelectionModel.SINGLE_TREE_SELECTION);
 
