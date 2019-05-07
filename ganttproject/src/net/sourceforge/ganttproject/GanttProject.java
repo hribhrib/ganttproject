@@ -37,7 +37,7 @@ import com.google.common.collect.Lists;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Scene;
-import letzplay.GanttGameLoop;
+import letzplay.ganttproject.GanttGameLoop;
 import net.sourceforge.ganttproject.action.ActiveActionProvider;
 import net.sourceforge.ganttproject.action.ArtefactAction;
 import net.sourceforge.ganttproject.action.ArtefactDeleteAction;

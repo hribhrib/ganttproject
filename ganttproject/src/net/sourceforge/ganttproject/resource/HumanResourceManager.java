@@ -20,7 +20,7 @@ package net.sourceforge.ganttproject.resource;
 
 import biz.ganttproject.core.time.GanttCalendar;
 import com.google.common.collect.Lists;
-import letzplay.GanttGameLoop;
+import letzplay.ganttproject.GanttGameLoop;
 import net.sourceforge.ganttproject.CustomPropertyManager;
 import net.sourceforge.ganttproject.GameOutput;
 import net.sourceforge.ganttproject.GanttProject;

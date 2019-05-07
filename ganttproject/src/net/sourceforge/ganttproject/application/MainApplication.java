@@ -6,7 +6,7 @@ package net.sourceforge.ganttproject.application;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import letzplay.GanttGameLoop;
+import letzplay.ganttproject.GanttGameLoop;
 import net.sourceforge.ganttproject.GPLogger;
 import net.sourceforge.ganttproject.GanttProject;
 
