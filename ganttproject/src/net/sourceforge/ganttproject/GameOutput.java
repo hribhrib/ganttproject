@@ -1,9 +1,9 @@
 package net.sourceforge.ganttproject;
 
-import letzplay.GanttGameLoop;
-import letzplay.Output;
-import letzplay.quest.Quest;
-import letzplay.quest.Task;
+import letzplay.ganttproject.GanttGameLoop;
+import letzplay.core.Output;
+import letzplay.core.Quest;
+import letzplay.core.Task;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -100,7 +100,7 @@ public class GameOutput {
             }
         });
 
-        //TODO image not woring
+
         ImageIcon tutorialIcon = new ImageIcon(GameOutput.class.getResource("/icons/done_small.png"));
         if (tutorialIcon != null) {
             tree.setCellRenderer(new MyRenderer(tutorialIcon));
