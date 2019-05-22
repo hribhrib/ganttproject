@@ -23,7 +23,7 @@ import com.google.common.collect.Lists;
 import letzplay.ganttproject.GanttGameLoop;
 import net.sourceforge.ganttproject.CustomPropertyManager;
 import net.sourceforge.ganttproject.GameOutput;
-import net.sourceforge.ganttproject.GanttProject;
+import static letzplay.ganttproject.GanttProjectTriggers.*;
 import net.sourceforge.ganttproject.roles.Role;
 import net.sourceforge.ganttproject.roles.RoleManager;
 import net.sourceforge.ganttproject.undo.GPUndoManager;
@@ -150,7 +150,7 @@ public class HumanResourceManager {
   }
 
   public void add(HumanResource resource) {
-    GanttGameLoop.getGameLoop().input("res:add:"+resource.getName().trim().toLowerCase());
+    GanttGameLoop.getGameLoop().input(res+add+resource.getName().trim().toLowerCase());
     GameOutput.refresh();
 
     if (resource.getId() == -1) {
