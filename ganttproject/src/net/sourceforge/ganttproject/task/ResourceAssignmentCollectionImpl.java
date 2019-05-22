@@ -18,6 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package net.sourceforge.ganttproject.task;
 
+import static letzplay.ganttproject.GanttProjectTriggers.*;
+import letzplay.ganttproject.GanttGameLoop;
 import net.sourceforge.ganttproject.resource.HumanResource;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
 import net.sourceforge.ganttproject.roles.Role;
@@ -261,6 +263,10 @@ class ResourceAssignmentCollectionImpl implements ResourceAssignmentCollection {
         }
       });
       myQueue.put(resource, new MutationInfo(result, MutationInfo.ADD));
+
+      //Trigger for adding a resource to task
+      GanttGameLoop.getGameLoop().input(tsk+mod+result.getTask().getName().toLowerCase().trim()+":"+result.getResource().getName());
+
       return result;
     }
 
