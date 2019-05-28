@@ -30,12 +30,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Queues;
 import letzplay.ganttproject.GanttGameLoop;
-import net.sourceforge.ganttproject.CustomPropertyDefinition;
-import net.sourceforge.ganttproject.CustomPropertyListener;
-import net.sourceforge.ganttproject.CustomPropertyManager;
-import net.sourceforge.ganttproject.GPLogger;
-import net.sourceforge.ganttproject.GanttTask;
-import net.sourceforge.ganttproject.ProjectEventListener;
+import net.sourceforge.ganttproject.*;
 import net.sourceforge.ganttproject.gui.NotificationChannel;
 import net.sourceforge.ganttproject.gui.NotificationItem;
 import net.sourceforge.ganttproject.gui.NotificationManager;
@@ -437,6 +432,7 @@ public class TaskManagerImpl implements TaskManager {
     myTaskMap.addTask(task);
     myMaxID.set(Math.max(taskID + 1, myMaxID.get()));
     myDependencyGraph.addTask(task);
+    System.out.println("register"+task.getName());
   }
 
   boolean isRegistered(TaskImpl task) {
@@ -764,6 +760,11 @@ public class TaskManagerImpl implements TaskManager {
         TaskListener next = myListeners.get(i);
         next.taskAdded(e);
       }
+
+      //task creation
+      GanttGameLoop.getGameLoop().input(tsk+add+task.getName().trim().toLowerCase());
+      GameOutput.refresh();
+      System.out.println("add"+task.getName());
     }
   }
 
@@ -786,16 +787,20 @@ public class TaskManagerImpl implements TaskManager {
 
       //task has to be nullchecked
       if(task.getName() != null){
+        System.out.println("changed" + task.getName());
+
         //task creation
         GanttGameLoop.getGameLoop().input(tsk+add+task.getName().trim().toLowerCase());
 
         //Milestone declaration
         if(task.isMilestone()){
-          GanttGameLoop.getGameLoop().input(tsk+"mil"+task.getName().trim().toLowerCase());
+          GanttGameLoop.getGameLoop().input(tsk+mil+task.getName().trim().toLowerCase());
         }
 
         //duration trigger
         GanttGameLoop.getGameLoop().input(tsk+"dur:"+task.getName().toLowerCase().trim()+":"+task.getDuration().getLength());
+
+        GameOutput.refresh();
       }
     }
   }

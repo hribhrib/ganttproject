@@ -193,6 +193,8 @@ public class TaskImpl implements Task {
 
     customValues = (CustomColumnsValues) copy.getCustomValues().clone();
 
+    System.out.println("task constructor" + myName);
+
     recalculateActivities();
   }
 
@@ -693,6 +695,8 @@ public class TaskImpl implements Task {
           TaskImpl.this.setName(name);
         }
       });
+
+      System.out.println("setname in taskimpls" + name);
     }
 
     @Override

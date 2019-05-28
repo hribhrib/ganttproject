@@ -21,6 +21,7 @@ package net.sourceforge.ganttproject.task.dependency;
 import biz.ganttproject.core.chart.scene.gantt.Connector;
 import letzplay.ganttproject.GanttGameLoop;
 import letzplay.ganttproject.GanttProjectTriggers;
+import net.sourceforge.ganttproject.GameOutput;
 import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskActivity;
 import biz.ganttproject.core.chart.scene.BarChartActivity;
@@ -71,7 +72,10 @@ public class TaskDependencyImpl implements TaskDependency {
     }
 
     //trigger for dependencies
-    GanttGameLoop.getGameLoop().input(GanttProjectTriggers.dep+dependee.getName()+":"+dependant.getName());
+    System.out.println(this.toString());
+    System.out.println(dependee.getName()+"->"+dependant.getName());
+    GanttGameLoop.getGameLoop().input(GanttProjectTriggers.tsk+GanttProjectTriggers.dep+dependee.getName()+":"+dependant.getName());
+    GameOutput.refresh();
 
   }
 

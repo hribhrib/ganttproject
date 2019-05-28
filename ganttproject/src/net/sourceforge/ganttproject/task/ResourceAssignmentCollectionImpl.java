@@ -20,6 +20,7 @@ package net.sourceforge.ganttproject.task;
 
 import static letzplay.ganttproject.GanttProjectTriggers.*;
 import letzplay.ganttproject.GanttGameLoop;
+import net.sourceforge.ganttproject.GameOutput;
 import net.sourceforge.ganttproject.resource.HumanResource;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
 import net.sourceforge.ganttproject.roles.Role;
@@ -266,6 +267,7 @@ class ResourceAssignmentCollectionImpl implements ResourceAssignmentCollection {
 
       //Trigger for adding a resource to task
       GanttGameLoop.getGameLoop().input(tsk+res+result.getTask().getName().toLowerCase().trim()+":"+result.getResource().getName());
+      GameOutput.refresh();
 
       return result;
     }

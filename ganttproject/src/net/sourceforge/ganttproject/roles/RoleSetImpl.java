@@ -19,6 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 package net.sourceforge.ganttproject.roles;
 
 import letzplay.ganttproject.GanttGameLoop;
+import net.sourceforge.ganttproject.GameOutput;
+
 import static letzplay.ganttproject.GanttProjectTriggers.*;
 
 import java.util.ArrayList;
@@ -69,6 +71,7 @@ public class RoleSetImpl implements RoleSet {
 
     //creating role trigger
     GanttGameLoop.getGameLoop().input(rol+add+name.toLowerCase().trim());
+    GameOutput.refresh();
 
     return result;
   }
@@ -84,6 +87,10 @@ public class RoleSetImpl implements RoleSet {
     Role role = findRole(roleID);
     if (role != null) {
       role.setName(name);
+      //creating role trigger
+      System.out.println("change role" + name);
+      GanttGameLoop.getGameLoop().input(rol+add+name.toLowerCase().trim());
+      GameOutput.refresh();
     }
   }
 
