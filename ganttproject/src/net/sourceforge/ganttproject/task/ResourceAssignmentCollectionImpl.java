@@ -265,7 +265,7 @@ class ResourceAssignmentCollectionImpl implements ResourceAssignmentCollection {
       myQueue.put(resource, new MutationInfo(result, MutationInfo.ADD));
 
       //Trigger for adding a resource to task
-      GanttGameLoop.getGameLoop().input(tsk+mod+result.getTask().getName().toLowerCase().trim()+":"+result.getResource().getName());
+      GanttGameLoop.getGameLoop().input(tsk+res+result.getTask().getName().toLowerCase().trim()+":"+result.getResource().getName());
 
       return result;
     }
