@@ -150,6 +150,7 @@ public class HumanResourceManager {
   }
 
   public void add(HumanResource resource) {
+    GanttGameLoop.getGameLoop().input(res+add);
     GanttGameLoop.getGameLoop().input(res+add+resource.getName().trim().toLowerCase());
     GameOutput.refresh();
 
