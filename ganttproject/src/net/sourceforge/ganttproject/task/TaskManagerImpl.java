@@ -169,15 +169,6 @@ public class TaskManagerImpl implements TaskManager {
         Arrays.sort(myArray, myComparator);
         isModified = false;
       }
-
-      for (Task task:myArray) {
-
-
-        System.out.println(task.getName() + " "  +
-                " " + task.isMilestone());
-
-      }
-
       return myArray;
     }
 

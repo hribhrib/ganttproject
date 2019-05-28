@@ -19,6 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 package net.sourceforge.ganttproject.task.dependency;
 
 import biz.ganttproject.core.chart.scene.gantt.Connector;
+import letzplay.ganttproject.GanttGameLoop;
+import letzplay.ganttproject.GanttProjectTriggers;
 import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskActivity;
 import biz.ganttproject.core.chart.scene.BarChartActivity;
@@ -67,6 +69,10 @@ public class TaskDependencyImpl implements TaskDependency {
     if (constraint != null) {
       constraint.setTaskDependency(this);
     }
+
+    //trigger for dependencies
+    GanttGameLoop.getGameLoop().input(GanttProjectTriggers.dep+dependee.getName()+":"+dependant.getName());
+
   }
 
   @Override
