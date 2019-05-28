@@ -793,6 +793,9 @@ public class TaskManagerImpl implements TaskManager {
         if(task.isMilestone()){
           GanttGameLoop.getGameLoop().input(tsk+"mil"+task.getName().trim().toLowerCase());
         }
+
+        //duration trigger
+        GanttGameLoop.getGameLoop().input(tsk+"dur:"+task.getName().toLowerCase().trim()+":"+task.getDuration().getLength());
       }
     }
   }
