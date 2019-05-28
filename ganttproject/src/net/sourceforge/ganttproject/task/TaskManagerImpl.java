@@ -793,14 +793,16 @@ public class TaskManagerImpl implements TaskManager {
         next.taskPropertiesChanged(e);
       }
 
-      //task creation
-      GanttGameLoop.getGameLoop().input(tsk+add+task.getName().trim().toLowerCase());
+      //task has to be nullchecked
+      if(task.getName() != null){
+        //task creation
+        GanttGameLoop.getGameLoop().input(tsk+add+task.getName().trim().toLowerCase());
 
-      //Milestone declaration
-      if(task.isMilestone()){
-        GanttGameLoop.getGameLoop().input(tsk+"mil"+task.getName().trim().toLowerCase());
+        //Milestone declaration
+        if(task.isMilestone()){
+          GanttGameLoop.getGameLoop().input(tsk+"mil"+task.getName().trim().toLowerCase());
+        }
       }
-
     }
   }
 
