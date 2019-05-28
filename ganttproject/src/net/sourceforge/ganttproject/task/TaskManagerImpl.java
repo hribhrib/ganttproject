@@ -29,6 +29,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Queues;
+import letzplay.ganttproject.GanttGameLoop;
 import net.sourceforge.ganttproject.CustomPropertyDefinition;
 import net.sourceforge.ganttproject.CustomPropertyListener;
 import net.sourceforge.ganttproject.CustomPropertyManager;
@@ -84,6 +85,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static letzplay.ganttproject.GanttProjectTriggers.*;
 
 /**
  * @author bard
@@ -166,6 +169,15 @@ public class TaskManagerImpl implements TaskManager {
         Arrays.sort(myArray, myComparator);
         isModified = false;
       }
+
+      for (Task task:myArray) {
+
+
+        System.out.println(task.getName() + " "  +
+                " " + task.isMilestone());
+
+      }
+
       return myArray;
     }
 
@@ -780,6 +792,15 @@ public class TaskManagerImpl implements TaskManager {
         TaskListener next = myListeners.get(i);
         next.taskPropertiesChanged(e);
       }
+
+      //task creation
+      GanttGameLoop.getGameLoop().input(tsk+add+task.getName().trim().toLowerCase());
+
+      //Milestone declaration
+      if(task.isMilestone()){
+        GanttGameLoop.getGameLoop().input(tsk+"mil"+task.getName().trim().toLowerCase());
+      }
+
     }
   }
 
