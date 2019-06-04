@@ -74,7 +74,7 @@ public class TaskDependencyImpl implements TaskDependency {
     //trigger for dependencies
     System.out.println(this.toString());
     System.out.println(dependee.getName()+"->"+dependant.getName());
-    GanttGameLoop.getGameLoop().input(GanttProjectTriggers.tsk+GanttProjectTriggers.dep+dependee.getName()+":"+dependant.getName());
+    GanttGameLoop.getGameLoop().input(GanttProjectTriggers.tsk+GanttProjectTriggers.dep+dependee.getName().trim().toLowerCase()+":"+dependant.getName().trim().toLowerCase());
     GameOutput.refresh();
 
   }
