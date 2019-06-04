@@ -798,7 +798,7 @@ public class TaskManagerImpl implements TaskManager {
         }
 
         //duration trigger
-        GanttGameLoop.getGameLoop().input(tsk+"dur:"+task.getName().toLowerCase().trim()+":"+task.getDuration().getLength());
+        GanttGameLoop.getGameLoop().input(tsk+dur+task.getName().toLowerCase().trim()+":"+task.getDuration().getLength());
 
         GameOutput.refresh();
       }
