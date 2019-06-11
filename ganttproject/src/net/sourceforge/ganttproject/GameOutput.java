@@ -18,6 +18,8 @@ import java.util.List;
 public class GameOutput {
     private static Output output = GanttGameLoop.getGameLoop().output();
 
+    private static int levelUp = 0;
+
     private static List<JTextField> lvls = new LinkedList<>();
     private static List<JTree> quests = new LinkedList<>();
     private static List<JTextArea> desc = new LinkedList<>();
@@ -38,6 +40,9 @@ public class GameOutput {
     public static void refresh() {
         GanttGameLoop.getGameLoop().update();
         output = GanttGameLoop.getGameLoop().output();
+
+        checkLvlUp(output);
+
         for (JTextField a : lvls) {
             a.setText("Current Level: " + output.lvl + ", " + output.exp + "% to next Level");
         }
@@ -60,9 +65,6 @@ public class GameOutput {
         desc.setEditable(false);
         desc.setLineWrap(true);
         desc.setPreferredSize(new Dimension(100, 100));
-
-
-
 
 
         DefaultMutableTreeNode top =
@@ -108,7 +110,7 @@ public class GameOutput {
 
         JTextField lvl = new JTextField();
         lvl.setEditable(false);
-        lvl.setMaximumSize(new Dimension(2000,50));
+        lvl.setMaximumSize(new Dimension(2000, 50));
 
         addTextField(lvl);
         addDesc(desc);
@@ -207,7 +209,7 @@ public class GameOutput {
 
         protected boolean isDone(Object value) {
             DefaultMutableTreeNode node =
-                    (DefaultMutableTreeNode)value;
+                    (DefaultMutableTreeNode) value;
 
             Object nodeInfo = node.getUserObject();
 
@@ -215,19 +217,37 @@ public class GameOutput {
             for (int i = 0; i < output.quests.size(); i++) {
                 for (int j = 0; j < output.quests.get(i).getTaskList().size(); j++) {
                     if (output.quests.get(i).getTaskList().get(j).getTitle().equals(nodeInfo)) {
-                        if(output.quests.get(i).getTaskList().get(j).isDone()){
+                        if (output.quests.get(i).getTaskList().get(j).isDone()) {
                             return true;
                         }
                     }
                 }
                 if (output.quests.get(i).getTitle().equals(nodeInfo)) {
-                    if(output.quests.get(i).finished()){
+                    if (output.quests.get(i).finished()) {
                         return true;
                     }
                 }
             }
 
             return false;
+        }
+    }
+
+
+    private static void checkLvlUp(Output output) {
+        if (levelUp == output.lvl) {
+            //do nothing
+        } else {
+            //DO LVL UP POPUP
+            levelUp = output.lvl;
+            if(levelUp == 5){
+                JOptionPane.showMessageDialog(null, "Herzlichen Glückwunsch, du hast nun das " +
+                        "Maximallevel erreicht und das Spiel druchgespielt!", "Gewonnen!", 1);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Herzlichen Glückwunsch, du hast nun Level: "
+                        + levelUp, "Level-Up!", 1);
+            }
         }
     }
 }
