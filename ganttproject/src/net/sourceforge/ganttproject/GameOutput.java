@@ -242,7 +242,7 @@ public class GameOutput {
             levelUp = output.lvl;
             if(levelUp == 5){
                 JOptionPane.showMessageDialog(null, "Herzlichen Glückwunsch, du hast nun das " +
-                        "Maximallevel erreicht und das Spiel druchgespielt!", "Gewonnen!", 1);
+                        "Maximallevel erreicht und das Spiel durchgespielt!", "Gewonnen!", 1);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Herzlichen Glückwunsch, du hast nun Level: "
